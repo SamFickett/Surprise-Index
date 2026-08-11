@@ -1,2 +1,2 @@
 # Surprise-Index
-The goal for this project is to collect as much data and attempt to create a new index is able to be scrapped and calculated. The new index pertains the idea of 'surprise' focused on the business environment.
+The goal for this project is to collect as much data and attempt to create a new index is able to be scrapped and calculated. The new index pertains the idea of 'surprise' focused on the business environment. Roughly, the score of said index is created using a combination of the number of 'surprise' mentions, including synonyms, and the difference between expected and realized volatility.
