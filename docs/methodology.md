@@ -13,13 +13,13 @@
 ### Calculation
  - The calculation for this will be the number of 'surprise' appearances, divided by total word count of the statement/blog
 
-## 2. Volatility
+## 2. Volatility (WIP)
 
 ### Expected Volatility
  - VIX is this measure
 
 ### Realized Volatility
- - words here
+ - WIP
 
 ### Comparison
  - Comparing the Predicted VIX was 30 days after its prediction
