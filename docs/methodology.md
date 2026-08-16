@@ -7,7 +7,7 @@
  and any synonyms and related terms. This will require a small bit of NLP to include examples such as: "shock", "unexpected", "unanticipated", etc.
 
 ### Data
- - A list of starting sources can be found in the 'project-outline.md' file in this folder. For now, those are the sources I will attempt to scrape. I will also be taking from the listed rss feeds from the website below
+ - A list of starting sources can be found in the 'initial-project-outline.md' file in this folder. For now, those are the sources I will attempt to scrape. I will also be taking from the listed rss feeds from the website below
  - https://rss.feedspot.com/financial_news_rss_feeds/
 
 ### Calculation
