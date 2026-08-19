@@ -24,13 +24,14 @@ def fetch_feed(url):
     return response.content
 
 def parse_article(item):
-    """RSS item to dict"""
+    """Convert RSS item to standardized dict"""
 
     title = item.findtext("title")
     url = item.findtext("link")
     published = item.findtext("pubDate")
     author = item.findtext("dc:creator", namespaces=NAMESPACES)
     description = item.findtext("description")
+    guid = item.findtext("guid")
 
     content_element = item.find("content:encoded", namespaces=NAMESPACES)
 
@@ -52,6 +53,7 @@ def parse_article(item):
         "source": "Fortune",
         "title": title,
         "url": url,
+        "guid": guid,
         "published": published,
         "author": author,
         "categories": categories,
@@ -72,7 +74,7 @@ def scrape_fortune():
     xml_data = fetch_feed(FORTUNE_RSS_URL)
 
     root = ET.fromstring(xml_data)
-
+    
     articles = []
 
     for item in root.findall(".//item"):
@@ -82,6 +84,13 @@ def scrape_fortune():
     return articles
 
 if __name__ == "__main__":
-    xml_data = fetch_feed(FORTUNE_RSS_URL)
+    articles = scrape_fortune()
 
-    print(xml_data[:1000])
+    print(f"Found {len(articles)} articles")
+
+    first_art = articles[0]
+    for key, value in first_art.items():
+        print(f"{key}: {value}")
+
+#    for article in articles:
+#        print(article["title"])
