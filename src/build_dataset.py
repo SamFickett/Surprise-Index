@@ -1,5 +1,7 @@
 from scraping.fortune import scrape_fortune
 from scraping.nasdaq import scrape_nasdaq
+from scraping.cnbc import scrape_cnbc
+from scraping.morningbrew import scrape_morningbrew
 
 import json
 from pathlib import Path
@@ -14,6 +16,14 @@ NASDAQ_OUTPUT = (
     BASE_DIR / "data" / "raw" / "nasdaq" / "nasdaq_articles.json"
 )
 
+CNBC_OUTPUT = (
+    BASE_DIR / "data" / "raw" / "cnbc" / "cnbc_articles.json"
+)
+
+MORNINGBREW_OUTPUT = (
+    BASE_DIR / "data" / "raw" / "morningbrew" / "morningbrew_articles.json"
+)
+
 MERGED_OUTPUT = (
     BASE_DIR / "data" / "processed" / "merged_articles.json"
 )
@@ -23,15 +33,30 @@ def build_dataset():
 
     fortune_articles = scrape_fortune()
     nasdaq_articles = scrape_nasdaq()
+    cnbc_articles = scrape_cnbc()
+    morningbrew_articles = scrape_morningbrew()
 
     save_articles(fortune_articles, FORTUNE_OUTPUT)
     save_articles(nasdaq_articles, NASDAQ_OUTPUT)
+    save_articles(cnbc_articles, CNBC_OUTPUT)
+    save_articles(morningbrew_articles, MORNINGBREW_OUTPUT)
 
-    all_articles = fortune_articles + nasdaq_articles   
+    all_articles = fortune_articles + nasdaq_articles + cnbc_articles + morningbrew_articles
 
-    save_articles(all_articles, MERGED_OUTPUT)
+    seen = set()
+    unique_articles = []
 
-    return all_articles
+    """WORKS FOR SOURCES WITH "GUIDS" ONLY. POTENTIAL FIX LATER"""
+    for article in all_articles:
+        key = (article["source"], article["guid"])
+
+        if key not in seen:
+            seen.add(key)
+            unique_articles.append(article)
+
+    save_articles(unique_articles, MERGED_OUTPUT)
+
+    return unique_articles
 
 def save_articles(articles, fp):
     """Save articles to JSON file"""

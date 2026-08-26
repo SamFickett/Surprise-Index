@@ -1,6 +1,61 @@
 [
   {
     "source": "NASDAQ",
+    "title": "Chartstopper: August 21, 2026",
+    "url": "https://www.nasdaq.com/economic-institute/chartstopper-082126",
+    "guid": "https://www.nasdaq.com/economic-institute/chartstopper-082126?time=1787346015",
+    "published": "Fri, 21 Aug 2026 21:00:15 +0000",
+    "author": "Michael Normyle",
+    "categories": [],
+    "description": "\n        The bond market was the big story this week.\n    ",
+    "content": ""
+  },
+  {
+    "source": "NASDAQ",
+    "title": "Biweekly Investment Insights: AI resurgence propels equities as breadth builds",
+    "url": "https://www.nasdaq.com/articles/global-indexes/ai-resurgence-propels-equities-as-breadth-builds",
+    "guid": "https://www.nasdaq.com/articles/global-indexes/ai-resurgence-propels-equities-as-breadth-builds?time=1787217788",
+    "published": "Thu, 20 Aug 2026 09:23:08 +0000",
+    "author": "Yanni Angelakos",
+    "categories": [],
+    "description": "\n        AI-driven earnings and broader EPS growth continue to support equities and market breadth. Softer Fed rate hike expectations are boosting risk assets, even as global bond yields remain near multi-decade highs. While markets may be volatile ahead of U.S. midterm elections, history suggests gains often follow.\n    ",
+    "content": ""
+  },
+  {
+    "source": "NASDAQ",
+    "title": "What is the Nasdaq-100? A Guide to One of the World's Most-Watched Indexes",
+    "url": "https://www.nasdaq.com/newsroom/what-is-the-nasdaq-100-guide-to-one-of-worlds-most-watched-indexes",
+    "guid": "https://www.nasdaq.com/newsroom/what-is-the-nasdaq-100-guide-to-one-of-worlds-most-watched-indexes?time=1787151600",
+    "published": "Wed, 19 Aug 2026 15:00:00 +0000",
+    "author": "Nasdaq Newsroom",
+    "categories": [],
+    "description": "\n        At its core, the Nasdaq-100 tracks 100 of the largest non-financial Nasdaq-listed companies, as measured by the total market value of those companies’ outstanding shares.\n    ",
+    "content": ""
+  },
+  {
+    "source": "NASDAQ",
+    "title": "What Is Nasdaq TotalView? Key Features and Benefits",
+    "url": "https://www.nasdaq.com/articles/data/nasdaq-totalview",
+    "guid": "https://www.nasdaq.com/articles/data/nasdaq-totalview?time=1787145717",
+    "published": "Wed, 19 Aug 2026 13:21:57 +0000",
+    "author": "Nasdaq Capital Access Platforms",
+    "categories": [],
+    "description": "\n        Nasdaq TotalView shows complete order book depth with full liquidity and orders at all prices . Learn how serious traders can use the depth of data for better execution.\n    ",
+    "content": ""
+  },
+  {
+    "source": "NASDAQ",
+    "title": "Private Markets Data Expansion: What LPs and GPs Need to Know",
+    "url": "https://www.nasdaq.com/articles/analytics/private-markets-data",
+    "guid": "https://www.nasdaq.com/articles/analytics/private-markets-data?time=1787087729",
+    "published": "Tue, 18 Aug 2026 21:15:29 +0000",
+    "author": "Nasdaq Capital Access Platforms",
+    "categories": [],
+    "description": "\n        Private market AUM now exceeds $20 trillion, but data infrastructure hasn't kept pace. Learn how institutional allocators can close the gap with modern technology.\n    ",
+    "content": ""
+  },
+  {
+    "source": "NASDAQ",
     "title": "Beyond Earth: The Rise of a Commercial Space Economy",
     "url": "https://www.nasdaq.com/articles/global-indexes/beyond-earth-rise-commercial-space-economy",
     "guid": "https://www.nasdaq.com/articles/global-indexes/beyond-earth-rise-commercial-space-economy?time=1787062725",
@@ -107,61 +162,6 @@
     "author": "Phil Mackintosh",
     "categories": [],
     "description": "\n        With companies staying private longer, meaning most are going public as bigger, more mature, companies. The data backs this up. Although, the “why” is still being argued over. \n    ",
-    "content": ""
-  },
-  {
-    "source": "NASDAQ",
-    "title": "The Search for New Measures of Value in the AI Era",
-    "url": "https://www.nasdaq.com/economic-institute/search-new-measures-value-ai-era",
-    "guid": "https://www.nasdaq.com/economic-institute/search-new-measures-value-ai-era?time=1786017600",
-    "published": "Thu, 06 Aug 2026 12:00:00 +0000",
-    "author": "Casey McClelland",
-    "categories": [],
-    "description": "\n        New research from the Nasdaq Economic Institute explores how AI is changing the way software companies define their value proposition.\n    ",
-    "content": ""
-  },
-  {
-    "source": "NASDAQ",
-    "title": "July 2026 Review and Outlook",
-    "url": "https://www.nasdaq.com/articles/july-2026-review-and-outlook",
-    "guid": "https://www.nasdaq.com/articles/july-2026-review-and-outlook?time=1785785126",
-    "published": "Mon, 03 Aug 2026 19:25:26 +0000",
-    "author": "The Market Intelligence Desk Team",
-    "categories": [],
-    "description": "\n        S&P 500 Equal Weight Index records best relative performance on record and S&P 500 corporate earnings on pace for strongest earnings surprise on record.\n    ",
-    "content": ""
-  },
-  {
-    "source": "NASDAQ",
-    "title": "Chartstopper: July 31, 2026",
-    "url": "https://www.nasdaq.com/articles/chartstopper-july-31-2026",
-    "guid": "https://www.nasdaq.com/articles/chartstopper-july-31-2026?time=1785532368",
-    "published": "Fri, 31 Jul 2026 21:12:48 +0000",
-    "author": "Michael Normyle",
-    "categories": [],
-    "description": "\n        This week was mostly about the Federal Reserve rate decision and the artificial intelligence (AI) trade, along with some developments in the Iran conflict and major economic data.\n    ",
-    "content": ""
-  },
-  {
-    "source": "NASDAQ",
-    "title": "The 2026 Intern’s Guide to Options",
-    "url": "https://www.nasdaq.com/articles/2026-interns-guide-options",
-    "guid": "https://www.nasdaq.com/articles/2026-interns-guide-options?time=1785450652",
-    "published": "Thu, 30 Jul 2026 22:30:52 +0000",
-    "author": "Phil Mackintosh",
-    "categories": [],
-    "description": "\n        Options trading has become increasingly popular in recent years, and so we updated our guide for U.S. options to help you understand options and how options markets work. \n    ",
-    "content": ""
-  },
-  {
-    "source": "NASDAQ",
-    "title": "Chartstopper: July 24, 2026",
-    "url": "https://www.nasdaq.com/articles/chartstopper-july-24-2026",
-    "guid": "https://www.nasdaq.com/articles/chartstopper-july-24-2026?time=1784928056",
-    "published": "Fri, 24 Jul 2026 21:20:56 +0000",
-    "author": "Michael Normyle",
-    "categories": [],
-    "description": "\n        There were three major themes this week: the Iran conflict, tariffs and AI investment costs.\n    ",
     "content": ""
   }
 ]

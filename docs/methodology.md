@@ -30,3 +30,7 @@
 ### Plot Graphs
  - How should the graphs be aligned? AKA what time intervals and how often?
 
+
+
+TODO: Do we allow sponsored/partner content?
+
