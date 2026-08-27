@@ -127,3 +127,9 @@ if __name__ == "__main__":
     print(f"Successful: {success_count}")
     print(f"Failed: {fail_count}")
   
+
+
+"""
+TODO:
+Remove disclaimer/legal text from the block templates
+"""

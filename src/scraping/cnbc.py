@@ -1,6 +1,7 @@
 import xml.etree.ElementTree as ET
 
 import requests
+import json
 from bs4 import BeautifulSoup
 
 CNBC_US_RSS_URL = "https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=15837362"
@@ -22,6 +23,18 @@ def fetch_feed(url):
     
     return response.content
 
+def fetch_page(url):
+    """Fetch HTML for content retrieval"""
+        
+    headers = {
+        "User-Agent": "Mozilla/5.0"
+    }
+        
+    response = requests.get(url, headers=headers, timeout=30)
+    response.raise_for_status()
+            
+    return response.text
+
 def parse_article(item):
     """Convert RSS item to standardized dict"""
 
@@ -30,6 +43,7 @@ def parse_article(item):
     published = item.findtext("pubDate")
     description = item.findtext("description")
     guid = item.findtext("guid")
+    content = get_article_content(url)
 
     # In relation to first scraper (Fortune)
     # Categories/Content not provided. Returned as empty
@@ -42,8 +56,21 @@ def parse_article(item):
         "author": None,
         "categories": [],
         "description": description,
-        "content": ""
+        "content": content
     }
+
+def get_article_content(url):
+    """Extract text content from CNBC article"""
+
+    html = fetch_page(url)
+    soup = BeautifulSoup(html, "html.parser")
+
+    content_element = soup.find("div", class_="ArticleBody-articleBody")
+
+    if content_element is None:
+        return ""
+
+    return content_element.get_text(" ", strip=True)
 
 def clean_html(html):
     """HTML -> plain text"""
@@ -88,8 +115,7 @@ def scrape_cnbc():
 if __name__ == "__main__":
     articles = scrape_cnbc()
 
-    print(f"Found {len(articles)} articles")
+    print(f"Found {len(articles)} articles\n")
 
-    first_art = articles[0]
-    for key, value in first_art.items():
-        print(f"{key}: {value}")
+    for article in articles:
+        print(article["title"])

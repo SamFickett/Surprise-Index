@@ -2,6 +2,8 @@ from scraping.fortune import scrape_fortune
 from scraping.nasdaq import scrape_nasdaq
 from scraping.cnbc import scrape_cnbc
 from scraping.morningbrew import scrape_morningbrew
+from processing.normalize_article import normalize_articles
+from processing.filter_relevance import filter_relevant_articles
 
 import json
 from pathlib import Path
@@ -26,6 +28,14 @@ MORNINGBREW_OUTPUT = (
 
 MERGED_OUTPUT = (
     BASE_DIR / "data" / "processed" / "merged_articles.json"
+)
+
+PROCESSED_OUTPUT = (
+    BASE_DIR / "data" / "processed" / "normalized_articles.json"
+)
+
+RELEVANT_OUTPUT = (
+    BASE_DIR / "data" / "processed" / "relevant_articles.json"
 )
 
 def build_dataset():
@@ -56,7 +66,13 @@ def build_dataset():
 
     save_articles(unique_articles, MERGED_OUTPUT)
 
-    return unique_articles
+    normalized_articles = normalize_articles(unique_articles)
+    save_articles(normalized_articles, PROCESSED_OUTPUT)
+
+    relevant_articles = filter_relevant_articles(normalized_articles)
+    save_articles(relevant_articles, RELEVANT_OUTPUT)
+
+    return relevant_articles
 
 def save_articles(articles, fp):
     """Save articles to JSON file"""
@@ -79,5 +95,5 @@ if __name__ == "__main__":
 
     print(f"Total articles: {len(all_articles)}")
 
-    for article in all_articles[:5]:
-        print(article["source"], "-", article["title"])
+    for article in all_articles:
+        print(article["content_type"])
