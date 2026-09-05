@@ -1,6 +1,9 @@
 import re
 
-from surprise.surprise_indicators import (
+import json
+from pathlib import Path
+
+from surprise_indicators import (
     SURPRISE_WORDS,
     SURPRISE_PHRASES
 )
@@ -62,14 +65,21 @@ def calculate_surprise(text):
         "surprise_score": surprise_score
     }
 
-if __name__ == "__maine__":
-    test_text = (
-        "The earnings report was surprising and shocked investors."
-        "Revenue also beat expectations."
+if __name__ == "__main__":
+    BASE_DIR = Path(__file__).resolve().parent.parent.parent
+
+    input_path = (
+        BASE_DIR / "data" / "processed" / "relevant_articles.json"
     )
 
-    result = calculate_surprise(test_text)
+    with input_path.open("r", encoding="utf-8") as file:
+        articles = json.load(file)
 
-    print("Word Count: ", result["word_count"])
-    print("Surprise Count: ", result["surprise_count"])
-    print("Surprise Score: ", result["surprise_score"])
+    article = articles[0]
+
+    result = calculate_surprise(article["content"])
+
+    print("Title: ", article["title"])
+    print("Word count: ", result["word_count"])
+    print("Surprise count: ", result["surprise_count"])
+    print("Surprise score: ", result["surprise_score"])

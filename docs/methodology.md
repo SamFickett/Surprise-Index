@@ -12,6 +12,7 @@
 
 ### Calculation
  - The calculation for this will be the number of 'surprise' appearances, divided by total word count of the statement/blog
+ - More can be found about exact word usage in the 'surprise-index.md' file inside of the /docs folder
 
 ## 2. Volatility (WIP)
 
