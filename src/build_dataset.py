@@ -4,11 +4,16 @@ from scraping.cnbc import scrape_cnbc
 from scraping.morningbrew import scrape_morningbrew
 from processing.normalize_article import normalize_articles
 from processing.filter_relevance import filter_relevant_articles
+from surprise.calculate_surprise import calculate_articles_surprise
+from surprise.aggregate_daily import aggregate_daily_surprise
 
 import json
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+#------------------------------------------------------------- #
+# Source output paths
 
 FORTUNE_OUTPUT = (
     BASE_DIR / "data" / "raw" / "fortune" / "fortune_articles.json"
@@ -26,6 +31,9 @@ MORNINGBREW_OUTPUT = (
     BASE_DIR / "data" / "raw" / "morningbrew" / "morningbrew_articles.json"
 )
 
+# ------------------------------------------------------------- #
+# Processed output paths
+
 MERGED_OUTPUT = (
     BASE_DIR / "data" / "processed" / "merged_articles.json"
 )
@@ -37,6 +45,17 @@ PROCESSED_OUTPUT = (
 RELEVANT_OUTPUT = (
     BASE_DIR / "data" / "processed" / "relevant_articles.json"
 )
+
+SURPRISE_OUTPUT = (
+    BASE_DIR / "data" / "processed" / "surprise_articles.json"
+)
+
+DAILY_SURPRISE_OUTPUT = (
+    BASE_DIR / "data" / "processed" / "daily_surprise.json"
+)
+
+# ------------------------------------------------------------- #
+# Dataset functions
 
 def build_dataset():
     """Build dataset from Fortune and NASDAQ articles"""
@@ -72,6 +91,12 @@ def build_dataset():
     relevant_articles = filter_relevant_articles(normalized_articles)
     save_articles(relevant_articles, RELEVANT_OUTPUT)
 
+    surprise_articles = calculate_articles_surprise(relevant_articles)
+    save_articles(surprise_articles, SURPRISE_OUTPUT)
+
+    daily_surprise = aggregate_daily_surprise(surprise_articles)
+    save_articles(daily_surprise, DAILY_SURPRISE_OUTPUT)
+
     return relevant_articles
 
 def save_articles(articles, fp):
@@ -95,5 +120,4 @@ if __name__ == "__main__":
 
     print(f"Total articles: {len(all_articles)}")
 
-    for article in all_articles:
-        print(article["content_type"])
+    print(len(all_articles))
