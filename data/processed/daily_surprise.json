@@ -4,48 +4,79 @@
     "article_count": 2,
     "word_count": 1778,
     "surprise_count": 2,
-    "surprise_score": 0.0011248593925759281
+    "surprise_score": 0.0011248593925759281,
+    "surprise_per_1000": 1.124859392575928
   },
   {
     "date": "2026-08-28",
     "article_count": 3,
     "word_count": 2898,
     "surprise_count": 2,
-    "surprise_score": 0.0006901311249137336
+    "surprise_score": 0.0006901311249137336,
+    "surprise_per_1000": 0.6901311249137336
   },
   {
     "date": "2026-09-01",
     "article_count": 1,
     "word_count": 1410,
     "surprise_count": 0,
-    "surprise_score": 0.0
+    "surprise_score": 0.0,
+    "surprise_per_1000": 0.0
   },
   {
     "date": "2026-09-02",
-    "article_count": 4,
-    "word_count": 1954,
+    "article_count": 1,
+    "word_count": 30,
     "surprise_count": 0,
-    "surprise_score": 0.0
+    "surprise_score": 0.0,
+    "surprise_per_1000": 0.0
   },
   {
     "date": "2026-09-03",
-    "article_count": 11,
-    "word_count": 7677,
-    "surprise_count": 2,
-    "surprise_score": 0.0002605184316790413
+    "article_count": 6,
+    "word_count": 4582,
+    "surprise_count": 0,
+    "surprise_score": 0.0,
+    "surprise_per_1000": 0.0
   },
   {
     "date": "2026-09-04",
-    "article_count": 16,
-    "word_count": 12662,
+    "article_count": 9,
+    "word_count": 8332,
     "surprise_count": 6,
-    "surprise_score": 0.000473858790080556
+    "surprise_score": 0.0007201152184349496,
+    "surprise_per_1000": 0.7201152184349496
   },
   {
     "date": "2026-09-05",
-    "article_count": 9,
-    "word_count": 6118,
-    "surprise_count": 6,
-    "surprise_score": 0.0009807126511932004
+    "article_count": 4,
+    "word_count": 2632,
+    "surprise_count": 2,
+    "surprise_score": 0.0007598784194528875,
+    "surprise_per_1000": 0.7598784194528876
+  },
+  {
+    "date": "2026-09-06",
+    "article_count": 2,
+    "word_count": 1026,
+    "surprise_count": 0,
+    "surprise_score": 0.0,
+    "surprise_per_1000": 0.0
+  },
+  {
+    "date": "2026-09-07",
+    "article_count": 4,
+    "word_count": 2113,
+    "surprise_count": 1,
+    "surprise_score": 0.000473260766682442,
+    "surprise_per_1000": 0.473260766682442
+  },
+  {
+    "date": "2026-09-08",
+    "article_count": 21,
+    "word_count": 12223,
+    "surprise_count": 10,
+    "surprise_score": 0.0008181297553792031,
+    "surprise_per_1000": 0.8181297553792031
   }
 ]
