@@ -1,0 +1,79 @@
+[
+  {
+    "date": "2026-08-27",
+    "article_count": 2,
+    "word_count": 1778,
+    "surprise_count": 2,
+    "surprise_score": 0.0011248593925759281,
+    "surprise_per_1000": 1.124859392575928,
+    "vix": 14.51,
+    "realized_volatility": 11.533007951134925,
+    "volatility_gap": 2.9769920488650747
+  },
+  {
+    "date": "2026-08-28",
+    "article_count": 3,
+    "word_count": 2898,
+    "surprise_count": 2,
+    "surprise_score": 0.0006901311249137336,
+    "surprise_per_1000": 0.6901311249137336,
+    "vix": 14.43,
+    "realized_volatility": 10.488658368422717,
+    "volatility_gap": 3.9413416315772825
+  },
+  {
+    "date": "2026-09-01",
+    "article_count": 1,
+    "word_count": 1410,
+    "surprise_count": 0,
+    "surprise_score": 0.0,
+    "surprise_per_1000": 0.0,
+    "vix": 16.34,
+    "realized_volatility": 9.60666838685107,
+    "volatility_gap": 6.7333316131489305
+  },
+  {
+    "date": "2026-09-02",
+    "article_count": 1,
+    "word_count": 30,
+    "surprise_count": 0,
+    "surprise_score": 0.0,
+    "surprise_per_1000": 0.0,
+    "vix": 15.2,
+    "realized_volatility": 7.409896184142969,
+    "volatility_gap": 7.79010381585703
+  },
+  {
+    "date": "2026-09-03",
+    "article_count": 6,
+    "word_count": 4582,
+    "surprise_count": 0,
+    "surprise_score": 0.0,
+    "surprise_per_1000": 0.0,
+    "vix": 14.32,
+    "realized_volatility": 8.303201455935934,
+    "volatility_gap": 6.016798544064066
+  },
+  {
+    "date": "2026-09-04",
+    "article_count": 9,
+    "word_count": 8332,
+    "surprise_count": 6,
+    "surprise_score": 0.0007201152184349496,
+    "surprise_per_1000": 0.7201152184349496,
+    "vix": 14.53,
+    "realized_volatility": 8.389803125659038,
+    "volatility_gap": 6.140196874340962
+  },
+  {
+    "date": "2026-09-08",
+    "article_count": 21,
+    "word_count": 12223,
+    "surprise_count": 10,
+    "surprise_score": 0.0008181297553792031,
+    "surprise_per_1000": 0.8181297553792031,
+    "vix": 15.72,
+    "realized_volatility": 8.319683088974045,
+    "volatility_gap": 7.400316911025955
+  }
+]
