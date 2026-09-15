@@ -4,15 +4,12 @@ import json
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin
 
+from scraping.common import (
+    fetch_page,
+    make_article
+)
+
 MORNINGBREW_URL = "https://www.morningbrew.com/"
-
-def fetch_page(url):
-    """Fetch HTML from webpage"""
-
-    response = requests.get(url, timeout=10)
-    response.raise_for_status()
-
-    return response.text
 
 def get_article_links(soup):
     """Extract Morning Brew article URLs from homepage"""
@@ -64,17 +61,17 @@ def parse_article(article_url):
         else ""
     )
 
-    return {
-        "source": "Morning Brew",
-        "title": title,
-        "url": url,
-        "guid": url,
-        "published": published,
-        "author": author,
-        "categories": [],
-        "description": description,
-        "content": content
-    }
+    return make_article(
+        source = "Morning Brew",
+        title = title,
+        url = url,
+        guid = url,
+        published = published,
+        author = author,
+        categories = [],
+        description = description,
+        content = content
+    )
 
 def scrape_morningbrew():
     """Scrape Morning Brew articles"""

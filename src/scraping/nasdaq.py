@@ -3,35 +3,17 @@ import xml.etree.ElementTree as ET
 import requests
 from bs4 import BeautifulSoup
 
+from scraping.common import (
+    fetch_feed,
+    fetch_page,
+    make_article
+)
+
 NASDAQ_RSS_URL = "https://www.nasdaq.com/feed/nasdaq-original/rss.xml"
 
 NAMESPACES = {
     "dc": "http://purl.org/dc/elements/1.1/"
 }
-
-def fetch_feed(url):
-    """Download RSS feed, return XML"""
-
-    headers = {
-        "User-Agent": "Mozilla/5.0"
-    }
-
-    response = requests.get(NASDAQ_RSS_URL, headers=headers, timeout=30)
-    response.raise_for_status()
-    
-    return response.content
-
-def fetch_page(url):
-    """Fetch HTML for content retrieval"""
-    
-    headers = {
-        "User-Agent": "Mozilla/5.0"
-    }
-    
-    response = requests.get(url, headers=headers, timeout=30)
-    response.raise_for_status()
-        
-    return response.content
 
 def extract_article_content(url):
     """Extract article content from NASDAQ article page"""
@@ -70,24 +52,17 @@ def parse_article(item):
 
     # In relation to first scraper (Fortune)
     # Categories/Content not provided. Returned as empty
-    return {
-        "source": "NASDAQ",
-        "title": title,
-        "url": url,
-        "guid": guid,
-        "published": published,
-        "author": author,
-        "categories": [],
-        "description": description,
-        "content": content
-    }
-
-def clean_html(html):
-    """HTML -> plain text"""
-
-    soup = BeautifulSoup(html, "html.parser")
-
-    return soup.get_text(" ", strip=True)
+    return make_article(
+        source = "NASDAQ",
+        title = title,
+        url = url,
+        guid = guid,
+        published = published,
+        author = author,
+        categories = [],
+        description = description,
+        content = content
+    )
 
 def scrape_nasdaq():
     """Scrape NASDAQ RSS feed"""

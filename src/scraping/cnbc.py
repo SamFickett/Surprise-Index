@@ -4,36 +4,18 @@ import requests
 import json
 from bs4 import BeautifulSoup
 
+from scraping.common import (
+    fetch_feed,
+    fetch_page,
+    make_article
+)
+
 CNBC_US_RSS_URL = "https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=15837362"
 CNBC_WORLD_RSS_URL = "https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=100727362"
 
 NAMESPACES = {
     "metadata": "http://search.cnbc.com/rss/2.0/modules/siteContentMetadata"
 }
-
-def fetch_feed(url):
-    """Download RSS feed, return XML"""
-
-    headers = {
-        "User-Agent": "Mozilla/5.0"
-    }
-
-    response = requests.get(url, headers=headers, timeout=30)
-    response.raise_for_status()
-    
-    return response.content
-
-def fetch_page(url):
-    """Fetch HTML for content retrieval"""
-        
-    headers = {
-        "User-Agent": "Mozilla/5.0"
-    }
-        
-    response = requests.get(url, headers=headers, timeout=30)
-    response.raise_for_status()
-            
-    return response.text
 
 def parse_article(item):
     """Convert RSS item to standardized dict"""
@@ -47,17 +29,17 @@ def parse_article(item):
 
     # In relation to first scraper (Fortune)
     # Categories/Content not provided. Returned as empty
-    return {
-        "source": "CNBC",
-        "title": title,
-        "url": url,
-        "guid": guid,
-        "published": published,
-        "author": None,
-        "categories": [],
-        "description": description,
-        "content": content
-    }
+    return make_article(
+        source = "CNBC",
+        title = title,
+        url = url,
+        guid = guid,
+        published = published,
+        author = None,
+        categories = [],
+        description = description,
+        content = content
+    )
 
 def get_article_content(url):
     """Extract text content from CNBC article"""
@@ -71,13 +53,6 @@ def get_article_content(url):
         return ""
 
     return content_element.get_text(" ", strip=True)
-
-def clean_html(html):
-    """HTML -> plain text"""
-
-    soup = BeautifulSoup(html, "html.parser")
-
-    return soup.get_text(" ", strip=True)
 
 def scrape_feed(feed_url):
     """Scrape CNBC RSS feeds"""

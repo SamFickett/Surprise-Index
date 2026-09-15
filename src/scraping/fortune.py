@@ -3,6 +3,12 @@ import xml.etree.ElementTree as ET
 import requests
 from bs4 import BeautifulSoup
 
+from scraping.common import (
+    fetch_feed,
+    clean_html,
+    make_article
+)
+
 FORTUNE_RSS_URL = "https://fortune.com/feed/fortune-feeds/?id=3230629"
 
 NAMESPACES = {
@@ -10,18 +16,6 @@ NAMESPACES = {
     "dc": "http://purl.org/dc/elements/1.1/",
     "dcterms": "http://purl.org/dc/terms/"
 }
-
-def fetch_feed(url):
-    """Download RSS feed, return XML"""
-
-    headers = {
-        "User-Agent": "Mozilla/5.0"
-    }
-
-    response = requests.get(FORTUNE_RSS_URL, headers=headers, timeout=30)
-    response.raise_for_status()
-    
-    return response.content
 
 def parse_article(item):
     """Convert RSS item to standardized dict"""
@@ -49,24 +43,17 @@ def parse_article(item):
         if category.text
     ]
 
-    return {
-        "source": "Fortune",
-        "title": title,
-        "url": url,
-        "guid": guid,
-        "published": published,
-        "author": author,
-        "categories": categories,
-        "description": description,
-        "content": content
-    }
-
-def clean_html(html):
-    """HTML -> plain text"""
-
-    soup = BeautifulSoup(html, "html.parser")
-
-    return soup.get_text(" ", strip=True)
+    return make_article(
+        source = "Fortune",
+        title = title,
+        url = url,
+        guid = guid,
+        published = published,
+        author = author,
+        categories = categories,
+        description = description,
+        content = content
+    )
 
 def scrape_fortune():
     """Scrape Fortune RSS feed"""
@@ -91,6 +78,3 @@ if __name__ == "__main__":
     first_art = articles[0]
     for key, value in first_art.items():
         print(f"{key}: {value}")
-
-#    for article in articles:
-#        print(article["title"])

@@ -1,82 +1,74 @@
 [
   {
-    "date": "2026-08-27",
-    "article_count": 2,
-    "word_count": 1778,
-    "surprise_count": 2,
-    "surprise_score": 0.0011248593925759281,
-    "surprise_per_1000": 1.124859392575928
-  },
-  {
-    "date": "2026-08-28",
-    "article_count": 3,
-    "word_count": 2898,
-    "surprise_count": 2,
-    "surprise_score": 0.0006901311249137336,
-    "surprise_per_1000": 0.6901311249137336
-  },
-  {
-    "date": "2026-09-01",
-    "article_count": 1,
-    "word_count": 1410,
-    "surprise_count": 0,
-    "surprise_score": 0.0,
-    "surprise_per_1000": 0.0
-  },
-  {
-    "date": "2026-09-02",
-    "article_count": 1,
-    "word_count": 30,
-    "surprise_count": 0,
-    "surprise_score": 0.0,
-    "surprise_per_1000": 0.0
-  },
-  {
     "date": "2026-09-03",
-    "article_count": 6,
-    "word_count": 4582,
+    "article_count": 3,
+    "word_count": 908,
     "surprise_count": 0,
     "surprise_score": 0.0,
     "surprise_per_1000": 0.0
   },
   {
     "date": "2026-09-04",
-    "article_count": 9,
-    "word_count": 8332,
-    "surprise_count": 6,
-    "surprise_score": 0.0007201152184349496,
-    "surprise_per_1000": 0.7201152184349496
-  },
-  {
-    "date": "2026-09-05",
-    "article_count": 4,
-    "word_count": 2632,
-    "surprise_count": 2,
-    "surprise_score": 0.0007598784194528875,
-    "surprise_per_1000": 0.7598784194528876
-  },
-  {
-    "date": "2026-09-06",
     "article_count": 2,
-    "word_count": 1026,
+    "word_count": 2266,
     "surprise_count": 0,
     "surprise_score": 0.0,
     "surprise_per_1000": 0.0
   },
   {
-    "date": "2026-09-07",
-    "article_count": 4,
-    "word_count": 2113,
-    "surprise_count": 1,
-    "surprise_score": 0.000473260766682442,
-    "surprise_per_1000": 0.473260766682442
+    "date": "2026-09-08",
+    "article_count": 3,
+    "word_count": 4401,
+    "surprise_count": 2,
+    "surprise_score": 0.0004544421722335833,
+    "surprise_per_1000": 0.4544421722335833
   },
   {
-    "date": "2026-09-08",
+    "date": "2026-09-09",
+    "article_count": 1,
+    "word_count": 2661,
+    "surprise_count": 1,
+    "surprise_score": 0.0003757985719654265,
+    "surprise_per_1000": 0.37579857196542654
+  },
+  {
+    "date": "2026-09-10",
+    "article_count": 4,
+    "word_count": 6440,
+    "surprise_count": 0,
+    "surprise_score": 0.0,
+    "surprise_per_1000": 0.0
+  },
+  {
+    "date": "2026-09-11",
+    "article_count": 7,
+    "word_count": 4521,
+    "surprise_count": 3,
+    "surprise_score": 0.0006635700066357001,
+    "surprise_per_1000": 0.6635700066357001
+  },
+  {
+    "date": "2026-09-12",
+    "article_count": 3,
+    "word_count": 2363,
+    "surprise_count": 0,
+    "surprise_score": 0.0,
+    "surprise_per_1000": 0.0
+  },
+  {
+    "date": "2026-09-14",
     "article_count": 21,
-    "word_count": 12223,
-    "surprise_count": 10,
-    "surprise_score": 0.0008181297553792031,
-    "surprise_per_1000": 0.8181297553792031
+    "word_count": 16956,
+    "surprise_count": 9,
+    "surprise_score": 0.0005307855626326964,
+    "surprise_per_1000": 0.5307855626326964
+  },
+  {
+    "date": "2026-09-15",
+    "article_count": 1,
+    "word_count": 0,
+    "surprise_count": 0,
+    "surprise_score": null,
+    "surprise_per_1000": null
   }
 ]
