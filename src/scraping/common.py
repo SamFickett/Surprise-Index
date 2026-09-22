@@ -3,6 +3,7 @@
 import requests
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
+import threading
 
 from bs4 import BeautifulSoup
 
@@ -16,8 +17,18 @@ DEFAULT_HEADERS = {
     )
 }
 
+_thread_local = threading.local()
+
+def get_session():
+    if not hasattr(_thread_local, "session"):
+        _thread_local.session = (create_session())
+
+    return _thread_local.session
+
 def fetch_url(url):
-    response = SESSION.get(url, timeout = 30)
+    session = get_session()
+
+    response = session.get(url, timeout = 30)
     response.raise_for_status()
 
     return response.text
@@ -42,10 +53,6 @@ def create_session():
 
     return session
 
-###
-SESSION = create_session()
-###
-
 def clean_html(html):
     if not html:
         return ""
@@ -53,6 +60,20 @@ def clean_html(html):
     soup = BeautifulSoup(html, "html.parser")
 
     return soup.get_text(" ", strip=True)
+
+def make_article_key(source, guid=None, url=None):
+    identifier = guid or url
+
+    if identifier is None:
+        return None
+
+    source = source.strip()
+    identifier = identifier.strip()
+
+    return (
+        source,
+        identifier
+    )
 
 def make_article(
         source, 

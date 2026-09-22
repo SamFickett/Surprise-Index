@@ -6,6 +6,7 @@ from bs4 import BeautifulSoup
 from scraping.common import (
     fetch_feed,
     clean_html,
+    make_article_key,
     make_article
 )
 
@@ -55,8 +56,11 @@ def parse_article(item):
         content = content
     )
 
-def scrape_fortune():
+def scrape_fortune(known_keys=None):
     """Scrape Fortune RSS feed"""
+
+    if known_keys is None:
+        known_keys = set()
 
     xml_data = fetch_feed(FORTUNE_RSS_URL)
 
@@ -65,8 +69,19 @@ def scrape_fortune():
     articles = []
 
     for item in root.findall(".//item"):
+        url = item.findtext("link")
+        guid = item.findtext("guid")
+
+        key = make_article_key("Fortune", guid=guid, url=url)
+
+        if key in known_keys:
+            continue
+
         article = parse_article(item)
         articles.append(article)
+
+        if key is not None:
+            known_keys.add(key)
 
     return articles
 

@@ -4,8 +4,12 @@ import json
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin
 
+from concurrent.futures import ThreadPoolExecutor
+MAX_WORKERS = 5
+
 from scraping.common import (
     fetch_page,
+    make_article_key,
     make_article
 )
 
@@ -73,24 +77,42 @@ def parse_article(article_url):
         content = content
     )
 
-def scrape_morningbrew():
+def scrape_morningbrew(known_keys=None):
     """Scrape Morning Brew articles"""
+
+    if known_keys is None:
+        known_keys = set()
 
     html = fetch_page(MORNINGBREW_URL)
     soup = BeautifulSoup(html, "html.parser")
 
     article_links = get_article_links(soup)
 
-    articles = []
+    new_links = []
 
     for article_url in article_links:
-        try:
-            article = parse_article(article_url)
-            articles.append(article)
-        except requests.RequestException as error:
-            print(f"Failed to scrape {article_url}: {error}")
+        key = make_article_key("Morning Brew", guid=article_url, url=article_url)
+
+        if key in known_keys:
+            continue
+
+        new_links.append(article_url)
+
+        known_keys.add(key)
+
+    with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
+        results = executor.map(safe_parse_article_url, new_links)
+
+        articles = [article for article in results if article is not None]
 
     return articles
+
+def safe_parse_article_url(url):
+    try:
+        parse_article(url)
+    except Exception as error:
+        print(f"Failed to parse {url}: {error}")
+        return None
 
 if __name__ == "__main__":
     articles = scrape_morningbrew()

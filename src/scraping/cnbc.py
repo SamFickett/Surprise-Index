@@ -3,15 +3,25 @@ import xml.etree.ElementTree as ET
 import requests
 import json
 from bs4 import BeautifulSoup
+import time
+
+from concurrent.futures import ThreadPoolExecutor
+MAX_WORKERS = 5
 
 from scraping.common import (
     fetch_feed,
     fetch_page,
+    make_article_key,
     make_article
 )
 
 CNBC_US_RSS_URL = "https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=15837362"
 CNBC_WORLD_RSS_URL = "https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=100727362"
+
+CNBC_FEEDS = (
+    CNBC_US_RSS_URL,
+    CNBC_WORLD_RSS_URL
+)
 
 NAMESPACES = {
     "metadata": "http://search.cnbc.com/rss/2.0/modules/siteContentMetadata"
@@ -54,38 +64,61 @@ def get_article_content(url):
 
     return content_element.get_text(" ", strip=True)
 
-def scrape_feed(feed_url):
+def scrape_feed(feed_url, known_keys=None):
     """Scrape CNBC RSS feeds"""
-    
+
+    if known_keys is None:
+        known_keys = set()
+
     xml_data = fetch_feed(feed_url)
     
     root = ET.fromstring(xml_data)
         
-    articles = []
+    new_items = []
     
     for item in root.findall(".//item"):
-        article = parse_article(item)
-        articles.append(article)
+        url = item.findtext("link")
+        guid = item.findtext("guid")
+
+        key = make_article_key("CNBC", guid=guid, url=url)
+
+        if key in known_keys:
+            continue
+
+        new_items.append(item)
+
+        if key is not None:
+            known_keys.add(key)
+
+    articles = []
+
+    with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
+        results = executor.map(safe_parse_article, new_items)
+
+        articles = [article for article in results if article is not None]
     
     return articles
 
-def scrape_cnbc():
-    us_articles = scrape_feed(CNBC_US_RSS_URL)
-    world_articles = scrape_feed(CNBC_WORLD_RSS_URL)
+def scrape_cnbc(known_keys=None):
+    if known_keys is None:
+        known_keys = set()
 
-    all_articles = us_articles + world_articles
+    articles = []
 
-    seen = set()
-    unique_articles = []
+    for feed_url in CNBC_FEEDS:
+        feed_articles = scrape_feed(feed_url, known_keys)
 
-    for article in all_articles:
-        guid = article["guid"]
+        articles.extend(feed_articles)
 
-        if guid not in seen:
-            seen.add(guid)
-            unique_articles.append(article)
+    return articles
 
-    return unique_articles
+def safe_parse_article(item):
+    try:
+        return parse_article(item)
+    except Exception as error:
+        url = item.findtext("link")
+        print(f"Failed to parse {url}: {error}")
+        return None
 
 if __name__ == "__main__":
     articles = scrape_cnbc()

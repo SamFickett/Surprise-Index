@@ -2,10 +2,16 @@ import xml.etree.ElementTree as ET
 
 import requests
 from bs4 import BeautifulSoup
+import time
+
+from concurrent.futures import ThreadPoolExecutor
+
+MAX_WORKERS = 5
 
 from scraping.common import (
     fetch_feed,
     fetch_page,
+    make_article_key,
     make_article
 )
 
@@ -64,20 +70,60 @@ def parse_article(item):
         content = content
     )
 
-def scrape_nasdaq():
+def scrape_nasdaq(known_keys=None):
     """Scrape NASDAQ RSS feed"""
+
+    if known_keys is None:
+        known_keys = set()
+
+    seen_keys = set(known_keys)
 
     xml_data = fetch_feed(NASDAQ_RSS_URL)
 
     root = ET.fromstring(xml_data)
     
-    articles = []
+    new_items = []
 
     for item in root.findall(".//item"):
-        article = parse_article(item)
-        articles.append(article)
+        url = item.findtext("link")
+        guid = item.findtext("guid")
+
+        key = make_article_key("NASDAQ", guid=guid, url=url)
+
+        if key in seen_keys:
+            continue
+
+        new_items.append(item)
+
+        if key is not None:
+            seen_keys.add(key)
+
+    articles = []
+
+    with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
+        results = list(
+            executor.map(
+                safe_parse_article,
+                new_items
+            )
+        )
+
+        for article in results:
+            if article is not None:
+                articles.append(article)
 
     return articles
+
+def safe_parse_article(item):
+    try:
+        return parse_article(item)
+    
+    except Exception as error:
+        url = item.findtext("link")
+
+        print(f"Failed to parse {url}: {error}")
+
+        return None
 
 if __name__ == "__main__":
     articles = scrape_nasdaq()
