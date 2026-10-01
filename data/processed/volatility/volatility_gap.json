@@ -1,95 +1,5 @@
 [
   {
-    "date": "2016-10-11",
-    "vix": 15.36,
-    "realized_volatility": 11.577462908426458,
-    "volatility_gap": 3.7825370915735412
-  },
-  {
-    "date": "2016-10-12",
-    "vix": 15.91,
-    "realized_volatility": 10.32110805815965,
-    "volatility_gap": 5.58889194184035
-  },
-  {
-    "date": "2016-10-13",
-    "vix": 16.69,
-    "realized_volatility": 10.384120691532443,
-    "volatility_gap": 6.305879308467558
-  },
-  {
-    "date": "2016-10-14",
-    "vix": 16.12,
-    "realized_volatility": 9.740681859034085,
-    "volatility_gap": 6.379318140965916
-  },
-  {
-    "date": "2016-10-17",
-    "vix": 16.21,
-    "realized_volatility": 9.710989850023138,
-    "volatility_gap": 6.499010149976863
-  },
-  {
-    "date": "2016-10-18",
-    "vix": 15.28,
-    "realized_volatility": 9.96327197432422,
-    "volatility_gap": 5.316728025675779
-  },
-  {
-    "date": "2016-10-19",
-    "vix": 14.41,
-    "realized_volatility": 9.991649909907952,
-    "volatility_gap": 4.418350090092048
-  },
-  {
-    "date": "2016-10-20",
-    "vix": 13.75,
-    "realized_volatility": 9.199427272010663,
-    "volatility_gap": 4.550572727989337
-  },
-  {
-    "date": "2016-10-21",
-    "vix": 13.34,
-    "realized_volatility": 8.847940191392018,
-    "volatility_gap": 4.492059808607982
-  },
-  {
-    "date": "2016-10-24",
-    "vix": 13.02,
-    "realized_volatility": 8.85349951770974,
-    "volatility_gap": 4.16650048229026
-  },
-  {
-    "date": "2016-10-25",
-    "vix": 13.46,
-    "realized_volatility": 8.429365792823539,
-    "volatility_gap": 5.030634207176462
-  },
-  {
-    "date": "2016-10-26",
-    "vix": 14.24,
-    "realized_volatility": 8.105745402787507,
-    "volatility_gap": 6.134254597212493
-  },
-  {
-    "date": "2016-10-27",
-    "vix": 15.36,
-    "realized_volatility": 7.871274407125544,
-    "volatility_gap": 7.488725592874456
-  },
-  {
-    "date": "2016-10-28",
-    "vix": 16.19,
-    "realized_volatility": 7.295824925297229,
-    "volatility_gap": 8.894175074702773
-  },
-  {
-    "date": "2016-10-31",
-    "vix": 17.06,
-    "realized_volatility": 6.617207453606697,
-    "volatility_gap": 10.442792546393303
-  },
-  {
     "date": "2016-11-01",
     "vix": 18.56,
     "realized_volatility": 6.883114693166485,
@@ -14950,5 +14860,83 @@
     "vix": 17.84,
     "realized_volatility": 8.601233351917879,
     "volatility_gap": 9.238766648082121
+  },
+  {
+    "date": "2026-09-11",
+    "vix": 15.84,
+    "realized_volatility": 9.132880368146806,
+    "volatility_gap": 6.707119631853194
+  },
+  {
+    "date": "2026-09-14",
+    "vix": 17.1,
+    "realized_volatility": 8.869190154425308,
+    "volatility_gap": 8.230809845574694
+  },
+  {
+    "date": "2026-09-15",
+    "vix": 17.2,
+    "realized_volatility": 8.945776844072089,
+    "volatility_gap": 8.25422315592791
+  },
+  {
+    "date": "2026-09-16",
+    "vix": 17.71,
+    "realized_volatility": 8.906745959798437,
+    "volatility_gap": 8.803254040201564
+  },
+  {
+    "date": "2026-09-17",
+    "vix": 15.44,
+    "realized_volatility": 9.6432460968313,
+    "volatility_gap": 5.7967539031687
+  },
+  {
+    "date": "2026-09-18",
+    "vix": 14.81,
+    "realized_volatility": 9.630405587512584,
+    "volatility_gap": 5.1795944124874165
+  },
+  {
+    "date": "2026-09-21",
+    "vix": 14.87,
+    "realized_volatility": 10.471274182918457,
+    "volatility_gap": 4.398725817081543
+  },
+  {
+    "date": "2026-09-22",
+    "vix": 14.21,
+    "realized_volatility": 10.392339619522348,
+    "volatility_gap": 3.817660380477653
+  },
+  {
+    "date": "2026-09-23",
+    "vix": 15.18,
+    "realized_volatility": 10.713292917354407,
+    "volatility_gap": 4.466707082645593
+  },
+  {
+    "date": "2026-09-24",
+    "vix": 15.67,
+    "realized_volatility": 10.66386042515658,
+    "volatility_gap": 5.00613957484342
+  },
+  {
+    "date": "2026-09-25",
+    "vix": 14.87,
+    "realized_volatility": 10.797300352395151,
+    "volatility_gap": 4.072699647604848
+  },
+  {
+    "date": "2026-09-28",
+    "vix": 16.07,
+    "realized_volatility": 10.857271002580369,
+    "volatility_gap": 5.212728997419632
+  },
+  {
+    "date": "2026-09-29",
+    "vix": 16.04,
+    "realized_volatility": 10.840108345861582,
+    "volatility_gap": 5.199891654138417
   }
 ]

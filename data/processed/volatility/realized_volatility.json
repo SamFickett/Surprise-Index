@@ -1,65 +1,5 @@
 [
   {
-    "date": "2016-10-11",
-    "realized_volatility": 11.577462908426458
-  },
-  {
-    "date": "2016-10-12",
-    "realized_volatility": 10.32110805815965
-  },
-  {
-    "date": "2016-10-13",
-    "realized_volatility": 10.384120691532443
-  },
-  {
-    "date": "2016-10-14",
-    "realized_volatility": 9.740681859034085
-  },
-  {
-    "date": "2016-10-17",
-    "realized_volatility": 9.710989850023138
-  },
-  {
-    "date": "2016-10-18",
-    "realized_volatility": 9.96327197432422
-  },
-  {
-    "date": "2016-10-19",
-    "realized_volatility": 9.991649909907952
-  },
-  {
-    "date": "2016-10-20",
-    "realized_volatility": 9.199427272010663
-  },
-  {
-    "date": "2016-10-21",
-    "realized_volatility": 8.847940191392018
-  },
-  {
-    "date": "2016-10-24",
-    "realized_volatility": 8.85349951770974
-  },
-  {
-    "date": "2016-10-25",
-    "realized_volatility": 8.429365792823539
-  },
-  {
-    "date": "2016-10-26",
-    "realized_volatility": 8.105745402787507
-  },
-  {
-    "date": "2016-10-27",
-    "realized_volatility": 7.871274407125544
-  },
-  {
-    "date": "2016-10-28",
-    "realized_volatility": 7.295824925297229
-  },
-  {
-    "date": "2016-10-31",
-    "realized_volatility": 6.617207453606697
-  },
-  {
     "date": "2016-11-01",
     "realized_volatility": 6.883114693166485
   },
@@ -9970,5 +9910,57 @@
   {
     "date": "2026-09-11",
     "realized_volatility": 9.132880368146806
+  },
+  {
+    "date": "2026-09-14",
+    "realized_volatility": 8.869190154425308
+  },
+  {
+    "date": "2026-09-15",
+    "realized_volatility": 8.945776844072089
+  },
+  {
+    "date": "2026-09-16",
+    "realized_volatility": 8.906745959798437
+  },
+  {
+    "date": "2026-09-17",
+    "realized_volatility": 9.6432460968313
+  },
+  {
+    "date": "2026-09-18",
+    "realized_volatility": 9.630405587512584
+  },
+  {
+    "date": "2026-09-21",
+    "realized_volatility": 10.471274182918457
+  },
+  {
+    "date": "2026-09-22",
+    "realized_volatility": 10.392339619522348
+  },
+  {
+    "date": "2026-09-23",
+    "realized_volatility": 10.713292917354407
+  },
+  {
+    "date": "2026-09-24",
+    "realized_volatility": 10.66386042515658
+  },
+  {
+    "date": "2026-09-25",
+    "realized_volatility": 10.797300352395151
+  },
+  {
+    "date": "2026-09-28",
+    "realized_volatility": 10.857271002580369
+  },
+  {
+    "date": "2026-09-29",
+    "realized_volatility": 10.840108345861582
+  },
+  {
+    "date": "2026-09-30",
+    "realized_volatility": 10.814804079861915
   }
 ]
