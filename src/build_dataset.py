@@ -57,73 +57,48 @@ DAILY_SURPRISE_OUTPUT = (
 )
 
 # ------------------------------------------------------------- #
+# Source Registry
+
+SOURCES = [
+    {
+        "name": "Fortune",
+        "scraper": scrape_fortune,
+        "output": FORTUNE_OUTPUT
+    },
+    {
+        "name": "Nasdaq",
+        "scraper": scrape_nasdaq,
+        "output": NASDAQ_OUTPUT
+    },
+    {
+        "name": "CNBC",
+        "scraper": scrape_cnbc,
+        "output": CNBC_OUTPUT
+    },
+    {
+        "name": "Morning Brew",
+        "scraper": scrape_morningbrew,
+        "output": MORNINGBREW_OUTPUT
+    }
+]
+
+# ------------------------------------------------------------- #
 # Dataset functions
 
 def build_dataset():
     """Build dataset from source articles"""
+    all_articles = []
 
-    # Search for existing articles, filter out previously seen
-    # for faster result time
-    existing_fortune = load_articles(FORTUNE_OUTPUT)
-    existing_nasdaq = load_articles(NASDAQ_OUTPUT)
-    existing_cnbc = load_articles(CNBC_OUTPUT)
-    existing_morningbrew = load_articles(MORNINGBREW_OUTPUT)
+    for source in SOURCES:
+        source_articles = process_source(source)
 
-    fortune_keys = get_known_keys(existing_fortune)
-    nasdaq_keys = get_known_keys(existing_nasdaq)
-    cnbc_keys = get_known_keys(existing_cnbc)
-    morningbrew_keys = get_known_keys(existing_morningbrew)
+        all_articles.extend(source_articles)
 
-    new_fortune = scrape_fortune(fortune_keys)
-    new_nasdaq = scrape_nasdaq(nasdaq_keys)
-    new_cnbc = scrape_cnbc(cnbc_keys)
-    new_morningbrew = scrape_morningbrew(morningbrew_keys)
+    all_articles = dedup_articles(all_articles)
 
-    fortune_articles = merge_articles(existing_fortune, new_fortune)
-    nasdaq_articles = merge_articles(existing_nasdaq, new_nasdaq)
-    cnbc_articles = merge_articles(existing_cnbc, new_cnbc)
-    morningbrew_articles = merge_articles(existing_morningbrew, new_morningbrew)
+    save_articles(all_articles, MERGED_OUTPUT)
 
-    all_articles = (fortune_articles + nasdaq_articles + cnbc_articles + morningbrew_articles)
-
-    # ---------- Testing ---------- #
-    print(f"Old Fortune: {len(existing_fortune)}")
-    print(f"New Fortune: {len(new_fortune)}")
-    print(f"Total Fortune: {len(fortune_articles)}")
-
-    print(f"Old Nasdaq: {len(existing_nasdaq)}")
-    print(f"New Nasdaq: {len(new_nasdaq)}")
-    print(f"Total Nasdaq: {len(nasdaq_articles)}")
-
-    print(f"Old CNBC: {len(existing_cnbc)}")
-    print(f"New CNBC: {len(new_cnbc)}")
-    print(f"Total CNBC: {len(cnbc_articles)}")
-
-    print(f"Old Morning Brew: {len(existing_morningbrew)}")
-    print(f"New Morning Brew: {len(new_morningbrew)}")
-    print(f"Total Morning Brew: {len(morningbrew_articles)}")
-
-    print(f"All Articles: {len(all_articles)}")
-
-    save_articles(fortune_articles, FORTUNE_OUTPUT)
-    save_articles(nasdaq_articles, NASDAQ_OUTPUT)
-    save_articles(cnbc_articles, CNBC_OUTPUT)
-    save_articles(morningbrew_articles, MORNINGBREW_OUTPUT)
-
-    seen = set()
-    unique_articles = []
-
-    """WORKS FOR SOURCES WITH "GUIDS" ONLY. POTENTIAL FIX LATER"""
-    for article in all_articles:
-        key = (article["source"], article["guid"])
-
-        if key not in seen:
-            seen.add(key)
-            unique_articles.append(article)
-
-    save_articles(unique_articles, MERGED_OUTPUT)
-
-    normalized_articles = normalize_articles(unique_articles)
+    normalized_articles = normalize_articles(all_articles)
     save_articles(normalized_articles, PROCESSED_OUTPUT)
 
     relevant_articles = filter_relevant_articles(normalized_articles)
@@ -136,6 +111,25 @@ def build_dataset():
     save_articles(daily_surprise, DAILY_SURPRISE_OUTPUT)
 
     return relevant_articles
+
+def process_source(source):
+    name = source["name"]
+    scraper = source["scraper"]
+    output = source["output"]
+
+    existing_articles = load_articles(output)
+    known_keys = get_known_keys(existing_articles)
+
+    start_time = time.perf_counter()
+    new_articles = scraper(known_keys)
+    elapsed = time.perf_counter() - start_time
+
+    merged_articles = merge_articles(existing_articles, new_articles)
+    save_articles(merged_articles, output)
+
+    print(f"{name}: {len(existing_articles)} existing, {len(new_articles)} new, {len(merged_articles)} total, {elapsed:.2f}s")
+
+    return merged_articles
 
 def load_articles(path):
     if not path.exists():
