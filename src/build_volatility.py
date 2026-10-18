@@ -92,8 +92,23 @@ def build_volatility():
     realized_data = calculate_realized_volatility(sp500_data)
     save_data(realized_data, REALIZED_OUTPUT)
 
+    # Sanity Check Start
+    # Can Negative Volatility Gaps Occur?
     gap_data = calculate_volatility_gap(vix_data, realized_data)
+    neg_gaps = [record for record in gap_data if record["volatility_gap"] < 0]
+
+    print(f"Total gap records: {len(gap_data)}")   
+    print(f"Negative gap records: {len(neg_gaps)}")
+    gaps = [record["volatility_gap"] for record in gap_data]
+
+    print("Min gap: ", min(gaps))
+    print("Max gap: ", max(gaps))
+
+    if neg_gaps:
+        print("Last negative: ", neg_gaps[-1])
+
     save_data(gap_data, GAP_OUTPUT)
+    # Sanity Check End
 
     surprise_data = load_data(DAILY_SURPRISE_INPUT)
     aligned_data = align_series(surprise_data, gap_data)
