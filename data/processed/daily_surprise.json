@@ -1,82 +1,194 @@
 [
   {
-    "date": "2026-08-27",
-    "article_count": 2,
-    "word_count": 1778,
-    "surprise_count": 2,
-    "surprise_score": 0.0011248593925759281,
-    "surprise_per_1000": 1.124859392575928
-  },
-  {
-    "date": "2026-08-28",
-    "article_count": 3,
-    "word_count": 2898,
-    "surprise_count": 2,
-    "surprise_score": 0.0006901311249137336,
-    "surprise_per_1000": 0.6901311249137336
-  },
-  {
-    "date": "2026-09-01",
+    "date": "2026-04-29",
     "article_count": 1,
-    "word_count": 1410,
-    "surprise_count": 0,
-    "surprise_score": 0.0,
-    "surprise_per_1000": 0.0
+    "word_count": 580,
+    "surprise_count": 1,
+    "surprise_score": 0.0017241379310344827,
+    "surprise_per_1000": 1.7241379310344827
   },
   {
-    "date": "2026-09-02",
+    "date": "2026-07-16",
     "article_count": 1,
-    "word_count": 30,
-    "surprise_count": 0,
-    "surprise_score": 0.0,
-    "surprise_per_1000": 0.0
+    "word_count": 1184,
+    "surprise_count": 1,
+    "surprise_score": 0.0008445945945945946,
+    "surprise_per_1000": 0.8445945945945946
   },
   {
     "date": "2026-09-03",
-    "article_count": 6,
-    "word_count": 4582,
+    "article_count": 3,
+    "word_count": 908,
     "surprise_count": 0,
     "surprise_score": 0.0,
     "surprise_per_1000": 0.0
   },
   {
     "date": "2026-09-04",
-    "article_count": 9,
-    "word_count": 8332,
-    "surprise_count": 6,
-    "surprise_score": 0.0007201152184349496,
-    "surprise_per_1000": 0.7201152184349496
-  },
-  {
-    "date": "2026-09-05",
-    "article_count": 4,
-    "word_count": 2632,
-    "surprise_count": 2,
-    "surprise_score": 0.0007598784194528875,
-    "surprise_per_1000": 0.7598784194528876
-  },
-  {
-    "date": "2026-09-06",
     "article_count": 2,
-    "word_count": 1026,
+    "word_count": 2266,
     "surprise_count": 0,
     "surprise_score": 0.0,
     "surprise_per_1000": 0.0
   },
   {
-    "date": "2026-09-07",
-    "article_count": 4,
-    "word_count": 2113,
-    "surprise_count": 1,
-    "surprise_score": 0.000473260766682442,
-    "surprise_per_1000": 0.473260766682442
+    "date": "2026-09-08",
+    "article_count": 3,
+    "word_count": 4401,
+    "surprise_count": 2,
+    "surprise_score": 0.0004544421722335833,
+    "surprise_per_1000": 0.4544421722335833
   },
   {
-    "date": "2026-09-08",
+    "date": "2026-09-09",
+    "article_count": 2,
+    "word_count": 5322,
+    "surprise_count": 2,
+    "surprise_score": 0.0003757985719654265,
+    "surprise_per_1000": 0.37579857196542654
+  },
+  {
+    "date": "2026-09-10",
+    "article_count": 6,
+    "word_count": 6495,
+    "surprise_count": 0,
+    "surprise_score": 0.0,
+    "surprise_per_1000": 0.0
+  },
+  {
+    "date": "2026-09-11",
+    "article_count": 7,
+    "word_count": 4521,
+    "surprise_count": 3,
+    "surprise_score": 0.0006635700066357001,
+    "surprise_per_1000": 0.6635700066357001
+  },
+  {
+    "date": "2026-09-12",
+    "article_count": 3,
+    "word_count": 2363,
+    "surprise_count": 0,
+    "surprise_score": 0.0,
+    "surprise_per_1000": 0.0
+  },
+  {
+    "date": "2026-09-14",
     "article_count": 21,
-    "word_count": 12223,
-    "surprise_count": 10,
-    "surprise_score": 0.0008181297553792031,
-    "surprise_per_1000": 0.8181297553792031
+    "word_count": 16956,
+    "surprise_count": 9,
+    "surprise_score": 0.0005307855626326964,
+    "surprise_per_1000": 0.5307855626326964
+  },
+  {
+    "date": "2026-09-15",
+    "article_count": 3,
+    "word_count": 888,
+    "surprise_count": 0,
+    "surprise_score": 0.0,
+    "surprise_per_1000": 0.0
+  },
+  {
+    "date": "2026-09-16",
+    "article_count": 17,
+    "word_count": 9054,
+    "surprise_count": 4,
+    "surprise_score": 0.0004417936823503424,
+    "surprise_per_1000": 0.4417936823503424
+  },
+  {
+    "date": "2026-09-17",
+    "article_count": 27,
+    "word_count": 21685,
+    "surprise_count": 12,
+    "surprise_score": 0.000553377910998386,
+    "surprise_per_1000": 0.553377910998386
+  },
+  {
+    "date": "2026-09-18",
+    "article_count": 8,
+    "word_count": 4608,
+    "surprise_count": 0,
+    "surprise_score": 0.0,
+    "surprise_per_1000": 0.0
+  },
+  {
+    "date": "2026-09-20",
+    "article_count": 3,
+    "word_count": 2731,
+    "surprise_count": 0,
+    "surprise_score": 0.0,
+    "surprise_per_1000": 0.0
+  },
+  {
+    "date": "2026-09-21",
+    "article_count": 21,
+    "word_count": 18920,
+    "surprise_count": 5,
+    "surprise_score": 0.0002642706131078224,
+    "surprise_per_1000": 0.2642706131078224
+  },
+  {
+    "date": "2026-09-22",
+    "article_count": 13,
+    "word_count": 8071,
+    "surprise_count": 3,
+    "surprise_score": 0.00037170115227357206,
+    "surprise_per_1000": 0.37170115227357203
+  },
+  {
+    "date": "2026-09-23",
+    "article_count": 6,
+    "word_count": 3187,
+    "surprise_count": 2,
+    "surprise_score": 0.0006275494195167869,
+    "surprise_per_1000": 0.6275494195167869
+  },
+  {
+    "date": "2026-09-24",
+    "article_count": 1,
+    "word_count": 624,
+    "surprise_count": 0,
+    "surprise_score": 0.0,
+    "surprise_per_1000": 0.0
+  },
+  {
+    "date": "2026-09-25",
+    "article_count": 2,
+    "word_count": 1502,
+    "surprise_count": 2,
+    "surprise_score": 0.0013315579227696406,
+    "surprise_per_1000": 1.3315579227696406
+  },
+  {
+    "date": "2026-09-28",
+    "article_count": 2,
+    "word_count": 2862,
+    "surprise_count": 3,
+    "surprise_score": 0.0010482180293501049,
+    "surprise_per_1000": 1.0482180293501049
+  },
+  {
+    "date": "2026-09-29",
+    "article_count": 11,
+    "word_count": 5529,
+    "surprise_count": 0,
+    "surprise_score": 0.0,
+    "surprise_per_1000": 0.0
+  },
+  {
+    "date": "2026-09-30",
+    "article_count": 32,
+    "word_count": 28144,
+    "surprise_count": 9,
+    "surprise_score": 0.0003197839681637294,
+    "surprise_per_1000": 0.3197839681637294
+  },
+  {
+    "date": "2026-10-01",
+    "article_count": 3,
+    "word_count": 2551,
+    "surprise_count": 1,
+    "surprise_score": 0.0003920031360250882,
+    "surprise_per_1000": 0.3920031360250882
   }
 ]

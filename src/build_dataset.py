@@ -6,8 +6,10 @@ from processing.normalize_article import normalize_articles
 from processing.filter_relevance import filter_relevant_articles
 from surprise.calculate_surprise import calculate_articles_surprise
 from surprise.aggregate_daily import aggregate_daily_surprise
+from scraping.common import make_article_key
 
 import json
+import time
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -55,37 +57,48 @@ DAILY_SURPRISE_OUTPUT = (
 )
 
 # ------------------------------------------------------------- #
+# Source Registry
+
+SOURCES = [
+    {
+        "name": "Fortune",
+        "scraper": scrape_fortune,
+        "output": FORTUNE_OUTPUT
+    },
+    {
+        "name": "Nasdaq",
+        "scraper": scrape_nasdaq,
+        "output": NASDAQ_OUTPUT
+    },
+    {
+        "name": "CNBC",
+        "scraper": scrape_cnbc,
+        "output": CNBC_OUTPUT
+    },
+    {
+        "name": "Morning Brew",
+        "scraper": scrape_morningbrew,
+        "output": MORNINGBREW_OUTPUT
+    }
+]
+
+# ------------------------------------------------------------- #
 # Dataset functions
 
 def build_dataset():
-    """Build dataset from Fortune and NASDAQ articles"""
+    """Build dataset from source articles"""
+    all_articles = []
 
-    fortune_articles = scrape_fortune()
-    nasdaq_articles = scrape_nasdaq()
-    cnbc_articles = scrape_cnbc()
-    morningbrew_articles = scrape_morningbrew()
+    for source in SOURCES:
+        source_articles = process_source(source)
 
-    save_articles(fortune_articles, FORTUNE_OUTPUT)
-    save_articles(nasdaq_articles, NASDAQ_OUTPUT)
-    save_articles(cnbc_articles, CNBC_OUTPUT)
-    save_articles(morningbrew_articles, MORNINGBREW_OUTPUT)
+        all_articles.extend(source_articles)
 
-    all_articles = fortune_articles + nasdaq_articles + cnbc_articles + morningbrew_articles
+    all_articles = dedup_articles(all_articles)
 
-    seen = set()
-    unique_articles = []
+    save_articles(all_articles, MERGED_OUTPUT)
 
-    """WORKS FOR SOURCES WITH "GUIDS" ONLY. POTENTIAL FIX LATER"""
-    for article in all_articles:
-        key = (article["source"], article["guid"])
-
-        if key not in seen:
-            seen.add(key)
-            unique_articles.append(article)
-
-    save_articles(unique_articles, MERGED_OUTPUT)
-
-    normalized_articles = normalize_articles(unique_articles)
+    normalized_articles = normalize_articles(all_articles)
     save_articles(normalized_articles, PROCESSED_OUTPUT)
 
     relevant_articles = filter_relevant_articles(normalized_articles)
@@ -98,6 +111,70 @@ def build_dataset():
     save_articles(daily_surprise, DAILY_SURPRISE_OUTPUT)
 
     return relevant_articles
+
+def process_source(source):
+    name = source["name"]
+    scraper = source["scraper"]
+    output = source["output"]
+
+    existing_articles = load_articles(output)
+    known_keys = get_known_keys(existing_articles)
+
+    start_time = time.perf_counter()
+    new_articles = scraper(known_keys)
+    elapsed = time.perf_counter() - start_time
+
+    merged_articles = merge_articles(existing_articles, new_articles)
+    save_articles(merged_articles, output)
+
+    print(f"{name}: {len(existing_articles)} existing, {len(new_articles)} new, {len(merged_articles)} total, {elapsed:.2f}s")
+
+    return merged_articles
+
+def load_articles(path):
+    if not path.exists():
+        return []
+
+    with path.open("r", encoding="utf-8") as file:
+        return json.load(file)
+
+def get_known_keys(articles):
+    keys = set()
+
+    for article in articles:
+        key = make_article_key(article.get("source"), guid=article.get("guid"), url=article.get("url"))
+
+        if key is not None:
+            keys.add(key)
+
+    return keys
+
+def merge_articles(existing_articles, new_articles):
+    return dedup_articles(existing_articles + new_articles)
+
+def dedup_articles(articles):
+    dedup = []
+    seen = set()
+
+    for index, article in enumerate(articles):
+        if not isinstance(article, dict):
+            print(f"BAD ARTICLE AT INDEX {index}")
+            print(f"Type: {type(article)}")
+            print(f"Value: {article}")
+            raise TypeError("Expected article dictionary")
+
+        key = make_article_key(article.get("source"), guid=article.get("guid"), url=article.get("url"))
+
+        if key is None:
+            continue
+
+        if key in seen:
+            continue
+
+        seen.add(key)
+        dedup.append(article)
+
+    return dedup
 
 def save_articles(articles, fp):
     """Save articles to JSON file"""
@@ -116,8 +193,15 @@ def save_articles(articles, fp):
         )
 
 if __name__ == "__main__":
+    start_time = time.perf_counter()
+
     all_articles = build_dataset()
 
-    print(f"Total articles: {len(all_articles)}")
+    end_time = time.perf_counter()
 
-    print(len(all_articles))
+    print("-" * 10)
+    print(f"Total relevant articles: {len(all_articles)}")
+
+    elapsed = end_time - start_time
+    print("-" * 10)
+    print(f"Build completed in {elapsed:.2f} seconds")
